@@ -3,6 +3,10 @@ package wmadp201_assginment4_group.src;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Educational Portal
+ * main source of this application
+ */
 public class EducationalPortal {
 
     private static int previousStudentsId;
@@ -24,7 +28,12 @@ public class EducationalPortal {
 
     }
 
-    public static int getStudentId() {
+    /**
+     * get new student id from this method
+     *
+     * @return int student id
+     */
+    public static int getNewStudentId() {
         return ++previousStudentsId;
     }
 
@@ -95,7 +104,7 @@ public class EducationalPortal {
                     return true;
                 default:
                     System.out.println("Please input number between 1 and 10.");
-                    System.out.println("");
+                    System.out.println();
 
             }
 
@@ -112,7 +121,7 @@ public class EducationalPortal {
         System.out.print("last name: ");
         String lastName = reader.nextLine();
 
-        String gender = "";
+        String gender;
         while(true) {
             System.out.print("gender [M/F]: ");
             gender = reader.nextLine();
@@ -135,7 +144,7 @@ public class EducationalPortal {
         System.out.print("age: ");
         String age = reader.nextLine();
 
-        String userName = "";
+        String userName;
         while(true) {
             System.out.print("username [At least 6 characters]: ");
             userName = reader.nextLine();
@@ -146,7 +155,7 @@ public class EducationalPortal {
             break;
         }
 
-        String password = "";
+        String password;
         while(true) {
             System.out.print("Please enter a password [At least 6 characters with at least one digit: ");
             password = reader.nextLine();
@@ -203,8 +212,7 @@ public class EducationalPortal {
     }
 
     private String getLoginViewText() {
-
-        String txt = "************************************************************\n" +
+        return "************************************************************\n" +
                 "Please enter your account to login:\n" +
                 "************************************************************\n" +
                 "Username:\n" +
@@ -213,28 +221,22 @@ public class EducationalPortal {
                 "----------------\n" +
                 "Not registered yet? Type “Register” and press enter to start the registration process!\n" +
                 "";
-
-        return txt;
     }
 
     private String getWelcomeText() {
-        String txt = "************************************************************\n" +
+        return "************************************************************\n" +
                 "Welcome to Cornerstone International College of Canada.\n" +
                 "************************************************************\n";
-
-        return txt;
     }
 
     private String getUncorrectInfoViewText() {
-        String txt = "************************************************************\n" +
+        return "************************************************************\n" +
                 "Your account does not exist. Please try again!\n" +
                 "************************************************************\n";
-
-        return txt;
     }
 
     private String getRegisterViewText() {
-        String txt = "\n************************************************************\n" +
+        return "\n************************************************************\n" +
                 "Welcome to CornerstoneInternational College of Canada.\n" +
                 "************************************************************\n" +
                 "Please enter your first name:\n" +
@@ -246,12 +248,10 @@ public class EducationalPortal {
                 "Please enter your age:\n" +
                 "Please enter a username [At least 6 characters]:\n" +
                 "Please enter a password [At least 6 characters with at least one digit]:\n";
-
-        return txt;
     }
 
     private String getMainMenuViewText() {
-        String txt = "************************************************************\n" +
+        return "************************************************************\n" +
                 "Select from the options:\n" +
                 "************************************************************\n" +
                 "—-[1] Print my enrolment certificate\n" +
@@ -267,7 +267,5 @@ public class EducationalPortal {
                 "\n" +
                 "************************************************************\n" +
                 "Enter the number corresponding to each item to proceed:";
-
-        return txt;
     }
 }

@@ -19,7 +19,7 @@ public class StudentProfile {
         this.address = address;
         this.age = age;
         this.admission = admission;
-        this.studentId = EducationalPortal.getStudentId();
+        this.studentId = EducationalPortal.getNewStudentId();
     }
 
     public String getFirstName() {

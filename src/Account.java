@@ -1,5 +1,8 @@
 package wmadp201_assginment4_group.src;
 
+/**
+ * Account
+ */
 public class Account {
     private String userName;
     private String password;
@@ -18,4 +21,5 @@ public class Account {
     public String getPassword() {
         return password;
     }
+
 }

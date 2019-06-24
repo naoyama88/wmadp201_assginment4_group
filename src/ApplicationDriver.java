@@ -1,5 +1,8 @@
 package wmadp201_assginment4_group.src;
 
+/**
+ * Application Driver
+ */
 public class ApplicationDriver {
 
     public static void main(String[] args) {
@@ -9,6 +12,10 @@ public class ApplicationDriver {
         educationalPortal.start();
     }
 
+    /**
+     * Make some sample data
+     * Because this application doesn't have offline data
+     */
     private void setSampleData() {
 
     }
