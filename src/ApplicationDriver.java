@@ -11,9 +11,11 @@ public class ApplicationDriver {
     public static void main(String[] args) {
 
         // TODO prepare sample data
+        students = new ArrayList<>();
 
         boolean isEnd = false;
         while (!isEnd) {
+            currentUser = null;
             isEnd = startSystem();
         }
     }
@@ -33,7 +35,7 @@ public class ApplicationDriver {
             Student student;
             boolean isCorrectLoginInfo = isRegisteredStudent(userName, password);
             if (!isCorrectLoginInfo) {
-                System.out.println(getCorrectInfoViewText());
+                System.out.println(getUncorrectInfoViewText());
                 return false;
             } else {
                 student = getStudent(userName, password);
@@ -42,28 +44,47 @@ public class ApplicationDriver {
             currentUser = student;
         }
 
-        System.out.println(getUncorrectInfoViewText());
+        System.out.println(getCorrectInfoViewText());
 
         boolean isEnd = false;
-        while(!isEnd) {
+        while(currentUser != null) {
             isEnd = startMainMenu();
         }
 
-        return false;
+        return isEnd;
     }
 
     private static boolean startMainMenu() {
-        // TODO show main menu
 
-        // TODO get which number user choose
+        Scanner reader = new Scanner(System.in);
+        String number;
 
-        // TODO if user choose 1~8, then print each information
+        while(true) {
+            System.out.print(getMainMenuViewText());
+            number = reader.nextLine();
+            switch (number) {
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                    // TODO dev
+                    break;
+                case "9":
+                    currentUser = null;
+                    return false;
+                case "10":
+                    currentUser = null;
+                    return true;
+                default:
+                    // TODO continue
 
-        // TODO if user choose 9, return false
+            }
 
-        // TODO if user choose 10, return true
-
-        return false;
+        }
     }
 
     private static void register() {
@@ -128,7 +149,7 @@ public class ApplicationDriver {
                 }
             }
 
-            if (!hasDigit) {
+            if (hasDigit) {
                 break;
             }
 
@@ -136,12 +157,16 @@ public class ApplicationDriver {
         }
 
         StudentProfile sp = new StudentProfile(firstName, lastName, gender, country, address, age, admission);
-        Student student = new Student(sp);
+        Account account = new Account(userName, password);
+        Student student = new Student(sp, account);
         students.add(student);
         currentUser = student;
     }
 
     private static boolean isRegisteredStudent(String userName, String password) {
+        if (students == null) {
+            return false;
+        }
         for (Student student: students) {
             if (student.getUserName().equals(userName) && student.getPassword().equals(password)) {
                 return true;
@@ -152,8 +177,14 @@ public class ApplicationDriver {
     }
 
     private static Student getStudent(String userName, String password) {
-        // fixme this is just a mock
-        return new Student(new StudentProfile("","","","","","", ""));
+
+        for (Student student : students) {
+            if (student.getUserName().equals(userName) && student.getPassword().equals(password)) {
+                return student;
+            }
+        }
+
+        throw new IllegalArgumentException("Student supposes to exist in ArrayList of student as field variable.");
     }
 
     private static String getLoginViewText() {
@@ -174,7 +205,7 @@ public class ApplicationDriver {
     private static String getCorrectInfoViewText() {
         String txt = "************************************************************\n" +
                 "Welcome to Cornerstone International College of Canada.\n" +
-                "************************************************************";
+                "************************************************************\n";
 
         return txt;
     }
@@ -182,7 +213,7 @@ public class ApplicationDriver {
     private static String getUncorrectInfoViewText() {
         String txt = "************************************************************\n" +
                 "Your account does not exist. Please try again!\n" +
-                "************************************************************";
+                "************************************************************\n";
 
         return txt;
     }
@@ -195,10 +226,11 @@ public class ApplicationDriver {
                 "Please enter your last name:\n" +
                 "Please enter your gender [M/F]:\n" +
                 "Please enter your country of origin:\n" +
+                "Please enter your address:\n" +
                 "Please enter the year of admission:\n" +
                 "Please enter your age:\n" +
                 "Please enter a username [At least 6 characters]:\n" +
-                "Please enter a username [At least 6 characters with at least one digit]:\n";
+                "Please enter a password [At least 6 characters with at least one digit]:\n";
 
         return txt;
     }

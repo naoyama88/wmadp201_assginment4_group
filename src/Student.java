@@ -2,17 +2,20 @@ package wmadp201_assginment4_group.src;
 
 public class Student {
 
-    public Student(StudentProfile sp) {
+    private StudentProfile sp;
+    private Account account;
 
+
+    public Student(StudentProfile sp, Account account) {
+        this.sp = sp;
+        this.account = account;
     }
 
     public String getUserName() {
-        // fixme mock
-        return "";
+        return this.account.getUserName();
     }
 
     public String getPassword() {
-        // fixme mock
-        return "";
+        return this.account.getPassword();
     }
 }

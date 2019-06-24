@@ -2,6 +2,8 @@ package wmadp201_assginment4_group.src;
 
 public class StudentProfile {
 
+    public static int generalStudentId;
+    private int studentId;
     private String firstName;
     private String lastName;
     private String gender;
@@ -18,5 +20,33 @@ public class StudentProfile {
         this.address = address;
         this.age = age;
         this.admission = admission;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getAdmission() {
+        return admission;
     }
 }
