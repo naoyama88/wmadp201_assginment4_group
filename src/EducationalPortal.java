@@ -185,6 +185,8 @@ public class EducationalPortal {
         Account account = new Account(userName, password, student);
         this.accounts.add(account);
         this.currentAccount = account;
+
+        System.out.println("Thanks, your account and profile has been created successfully. Welcome Aboard " + firstName + " " + lastName);
     }
 
     private boolean isRegisteredUser(String userName, String password) {
