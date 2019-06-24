@@ -2,7 +2,6 @@ package wmadp201_assginment4_group.src;
 
 public class StudentProfile {
 
-    public static int generalStudentId;
     private int studentId;
     private String firstName;
     private String lastName;
@@ -20,6 +19,7 @@ public class StudentProfile {
         this.address = address;
         this.age = age;
         this.admission = admission;
+        this.studentId = EducationalPortal.getStudentId();
     }
 
     public String getFirstName() {

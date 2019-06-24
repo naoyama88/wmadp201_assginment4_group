@@ -1,21 +1,14 @@
 package wmadp201_assginment4_group.src;
 
-public class Student {
+public class Student extends User {
 
+    private int admissionYear;
+    private int yearInUniversity;
+    private GeneralTranscript gt;
+    private CurrentSemesterTranscript cst;
     private StudentProfile sp;
-    private Account account;
 
-
-    public Student(StudentProfile sp, Account account) {
+    public Student(StudentProfile sp) {
         this.sp = sp;
-        this.account = account;
-    }
-
-    public String getUserName() {
-        return this.account.getUserName();
-    }
-
-    public String getPassword() {
-        return this.account.getPassword();
     }
 }
