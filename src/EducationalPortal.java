@@ -52,17 +52,26 @@ public class EducationalPortal {
         EducationalPortal.manager = manager;
     }
 
+    /**
+     * start system
+     *
+     * @return boolean true:terminate  false: logout
+     */
     private boolean startSystem() {
 
         System.out.println(getLoginViewText());
+
+        // start asking
         System.out.print("user name: ");
         Scanner reader = new Scanner(System.in);
         String userName = reader.nextLine();
         Account account;
         if (userName.equals("Register")) {
+            // start registration process
             account = registerStudent();
 
         } else {
+            // keep asking for login information
             System.out.print("password: ");
             String password = reader.nextLine();
             boolean isCorrectLoginInfo = isRegisteredStudent(userName, password);
@@ -76,15 +85,23 @@ public class EducationalPortal {
         }
 
         System.out.println(getWelcomeText());
+
+        // wait for 2 seconds
         try {
             Thread.sleep(2000);
         } catch(InterruptedException e) {
-            e.printStackTrace();
+            // do nothing
         }
 
         return startMainMenu(account);
     }
 
+    /**
+     * start showing menu after login
+     *
+     * @param account login account
+     * @return boolean true:terminate  false: logout
+     */
     private boolean startMainMenu(Account account) {
 
         Scanner reader = new Scanner(System.in);
@@ -144,6 +161,11 @@ public class EducationalPortal {
         }
     }
 
+    /**
+     * register new student information
+     *
+     * @return Account new account
+     */
     private Account registerStudent() {
         System.out.println(getRegisterViewText());
 
