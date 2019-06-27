@@ -5,13 +5,14 @@ package wmadp201_assginment4_group.src;
  */
 public class Account {
     private String userName;
+    // password should be hashed but it's too bothering for me
     private String password;
-    private User user;
+    private Student student;
 
-    public Account(String userName, String password, User user) {
+    public Account(String userName, String password, Student student) {
         this.userName = userName;
         this.password = password;
-        this.user = user;
+        this.student = student;
     }
 
     public String getUserName() {
@@ -20,6 +21,10 @@ public class Account {
 
     public String getPassword() {
         return password;
+    }
+
+    public Student getStudent() {
+        return this.student;
     }
 
 }
